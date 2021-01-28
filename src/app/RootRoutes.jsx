@@ -24,6 +24,7 @@ import ecommerceRoutes from "./views/ecommerce/EcommerceRoutes";
 import pagesRoutes from "./views/pages/pagesRoutes";
 import dataTableRoutes from "./views/data-table/dataTableRoutes";
 
+
 const redirectRoute = [
   {
     path: "/",

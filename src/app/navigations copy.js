@@ -1,117 +1,6 @@
 import { authRoles } from "./auth/authRoles";
 
 export const navigations = [
-
-  {
-    name: "Dashboard",
-    path: "/dashboard/default",
-    icon: "dashboard",
-  },
-  {
-    name: "Families",
-    icon: "people",
-    children: [
-      {
-        name: "Families List",
-        path: "/pages/family-list",
-        iconText: "CL",
-      },
-      {
-        name: "New Family",
-        path: "/pages/new-family",
-        iconText: "NC",
-      },
-    ],
-  },
-  {
-    name: "Jamath",
-    icon: "people",
-    children: [
-      {
-        name: "Jamaths List",
-        path: "/pages/jamath-list",
-        iconText: "CL",
-      },
-      {
-        name: "New Jamath",
-        path: "/pages/new-jamath",
-        iconText: "NC",
-      },
-    ],
-  },
-  {
-    name: "Projects",
-    icon: "people",
-    children: [
-      {
-        name: "Food",
-        path: "/pages/food-list",
-        iconText: "CL",
-      },
-      {
-        name: "Health",
-        path: "/pages/health-list",
-        iconText: "VC",
-      },
-      {
-        name: "Education",
-        path: "/pages/education-list",
-        iconText: "NC",
-      },
-      {
-        name: "Self Reliance",
-        path: "/pages/self-reliance-list",
-        iconText: "NC",
-      },
-      {
-        name: "Infrastucture",
-        path: "/pages/infrastructure-list",
-        iconText: "NC",
-      },
-    ],
-  },
-  {
-    name: "Human Resource",
-    icon: "people",
-    children: [
-      {
-        name: "Headquaters Units",
-        path: "/pages/headquarter-unit-list",
-        iconText: "CL",
-      },
-      {
-        name: "Overseas Units",
-        path: "/pages/overseas-unit-list",
-        iconText: "VC",
-      },
-      {
-        name: "Organisation Staffs",
-        path: "/pages/organisation-staff-list",
-        iconText: "NC",
-      },
-    ],
-  },
-  {
-    name: "Users",
-    icon: "people",
-    children: [
-      {
-        name: "Users List",
-        path: "/pages/user-list",
-        iconText: "CL",
-      },
-      {
-        name: "New User",
-        path: "/pages/new-user",
-        iconText: "NC",
-      },
-    ],
-  },
-  // ---------------------- For reffrence -------------------------
-  {
-    label: "All",
-    type: "label",
-  },
   {
     name: "Dashboard",
     path: "/dashboard/default",
@@ -131,6 +20,7 @@ export const navigations = [
     label: "Pages",
     type: "label",
   },
+ 
   {
     name: "Customers",
     icon: "people",
@@ -602,5 +492,4 @@ export const navigations = [
     type: "extLink",
     path: "http://demos.ui-lib.com/matx-react-doc/",
   },
-
 ];

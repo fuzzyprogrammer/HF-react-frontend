@@ -102,7 +102,7 @@ const Layout1Topbar = () => {
               <Icon>menu</Icon>
             </IconButton>
 
-            <div className="hide-on-mobile">
+            {/* <div className="hide-on-mobile">
               <IconButton>
                 <Icon>mail_outline</Icon>
               </IconButton>
@@ -114,17 +114,17 @@ const Layout1Topbar = () => {
               <IconButton>
                 <Icon>star_outline</Icon>
               </IconButton>
-            </div>
+            </div> */}
           </div>
           <div className="flex items-center">
             <MatxSearchBox />
-            <NotificationProvider>
+            {/* <NotificationProvider>
               <NotificationBar />
-            </NotificationProvider>
+            </NotificationProvider> */}
             
             {/* <NotificationBar2 /> */}
 
-            <ShoppingCart />
+            {/* <ShoppingCart /> */}
 
             <MatxMenu
               menuButton={

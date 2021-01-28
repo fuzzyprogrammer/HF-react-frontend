@@ -34,7 +34,8 @@ const useStyles = makeStyles(({ palette, ...theme }) => ({
 
 const JwtLogin = () => {
   const [loading, setLoading] = useState(false);
-  const [userInfo, setUserInfo] = useState({email: "jason@ui-lib.com", password: 'dummyPass'});
+  const [userInfo, setUserInfo] = useState({email: "", password: ''});
+  // const [userInfo, setUserInfo] = useState({email: "jason@ui-lib.com", password: 'dummyPass'});
   const [message, setMessage] = useState('');
   const { login } = useAuth();
 
@@ -143,13 +144,13 @@ const JwtLogin = () => {
                       />
                     )}
                   </div>
-                  <span className="mr-2 ml-5">or</span>
+                  {/* <span className="mr-2 ml-5">or</span>
                   <Button
                     className="capitalize"
                     onClick={() => history.push("/session/signup")}
                   >
                     Sign up
-                  </Button>
+                  </Button> */}
                 </div>
                 <Button
                   className="text-primary"
