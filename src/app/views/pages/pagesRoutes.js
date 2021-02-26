@@ -59,6 +59,34 @@ const pagesRoutes = [
     path: "/pages/order-list",
     component: React.lazy(() => import("./orders/OrderList")),
   },
+
+  // route for users
+  {
+    path: "/pages/jamath-user-list",
+    component: React.lazy(()=> import("./jamathUsers/JamathUserList")),
+  },
+  {
+    path: "/pages/jamath-user-form",
+    component: React.lazy(()=> import("./jamathUsers/jamath-user-form/JamathForm")),
+  },
+  {
+    path: "/pages/view-jamath-user",
+    component: React.lazy(()=> import("./jamathUsers/jamathUser-viewer/JamathUserViewer")),
+  },
+
+  // routes for jamaths
+  {
+    path: "/pages/jamath-list",
+    component: React.lazy(() => import("./jamath/JamathList")),
+  },
+  {
+    path: "/pages/jamath-form",
+    component: React.lazy(() => import("./jamath/jamath-form/JamathForm")),
+  },
+  {
+    path: "/pages/view-jamath",
+    component: React.lazy(() => import("./jamath/jamath-viewer/JamathViewer")),
+  },
 ];
 
 export default pagesRoutes;

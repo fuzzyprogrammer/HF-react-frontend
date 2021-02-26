@@ -1,6 +1,6 @@
 import { authRoles } from "./auth/authRoles";
-import useAuth from "app/hooks/useAuth";
-const {role} = useAuth;
+// import useAuth from "app/hooks/useAuth";
+// const {role} = useAuth;
 export const navigations = [
   {
     name: "Dashboard",
@@ -8,23 +8,54 @@ export const navigations = [
     icon: "dashboard",
 
   },
-  {
-    name: "Alternative",
-    path: "/dashboard/alternative",
-    icon: "analytics",
-    // auth: authRoles.sa,
+  // {
+  //   name: "Alternative",
+  //   path: "/dashboard/alternative",
+  //   icon: "analytics",
+  //   // auth: authRoles.sa,
     
-  },
-  {
-    name: "Inventory Management",
-    path: "/dashboard/inventory-management",
-    icon: "store",
-  },
+  // },
+  // {
+  //   name: "Inventory Management",
+  //   path: "/dashboard/inventory-management",
+  //   icon: "store",
+  // },
   {
     label: "Pages",
     type: "label",
   },
-  
+  {
+    name: "Users",
+    icon: "people",
+    children: [
+      {
+        name: "User List",
+        path: "/pages/jamath-user-list",  
+        iconText: "CL",
+      },
+      {
+        name: "Add User",
+        path: "/pages/jamath-user-form",  
+        iconText: "CL",
+      },
+    ]
+  },
+  {
+    name: "Jamaths",
+    icon: "books",
+    children: [
+      {
+        name: "Jamath List",
+        path: "/pages/jamath-list",  
+        iconText: "CL",
+      },
+      {
+        name: "Add Jamath",
+        path: "/pages/jamath-form",  
+        iconText: "CL",
+      },
+    ]
+  },
   {
     name: "Customers",
     icon: "people",
