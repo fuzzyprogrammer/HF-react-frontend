@@ -1,8 +1,5 @@
-<<<<<<< HEAD
+
 // import "../fake-db";
-=======
-import "../fake-db";
->>>>>>> main
 import React from "react";
 import { Provider } from "react-redux";
 import { Router, Switch, Route } from "react-router-dom";
@@ -13,11 +10,7 @@ import { Store } from "./redux/Store";
 import { GlobalCss, MatxSuspense, MatxTheme, MatxLayout } from "matx";
 import sessionRoutes from "./views/sessions/SessionRoutes";
 import AuthGuard from "./auth/AuthGuard";
-<<<<<<< HEAD
 import { AuthProvider } from "app/contexts/JWTAuthContext";
-=======
-import { AuthProvider } from "app/contexts/FirebaseAuthContext";
->>>>>>> main
 import { SettingsProvider } from "app/contexts/SettingsContext";
 
 const App = () => {
