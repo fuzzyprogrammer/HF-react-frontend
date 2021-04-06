@@ -2,7 +2,11 @@ import React from "react";
 import { Breadcrumb } from "matx";
 import { Card } from "@material-ui/core";
 import BasicMap from "./BasicMap";
+<<<<<<< HEAD
 import MarkerMap from "./MarkerMap";
+=======
+// import MarkerMap from "./MarkerMap";
+>>>>>>> main
 
 const AppMap = () => {
   return (
@@ -15,7 +19,11 @@ const AppMap = () => {
       </Card>
       <div className="py-3" />
       <Card>
+<<<<<<< HEAD
         <MarkerMap />
+=======
+        {/* <MarkerMap /> */}
+>>>>>>> main
       </Card>
     </div>
   );

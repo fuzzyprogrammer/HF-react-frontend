@@ -10,7 +10,11 @@
 /coverage
 
 # production
+<<<<<<< HEAD
 /build
+=======
+# /build
+>>>>>>> main
 
 # misc
 .DS_Store

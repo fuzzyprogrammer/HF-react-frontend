@@ -11,7 +11,11 @@ const useStyles = makeStyles(({ palette, ...theme }) => ({
       display: "table",
       width: "100%",
       minHeight: "auto",
+<<<<<<< HEAD
       padding: "0.5rem 0",
+=======
+      padding: "1rem 0",
+>>>>>>> main
       "& .container": {
         flexDirection: "column !important",
         "& a": {
@@ -36,6 +40,7 @@ const Footer = () => {
   return (
     <ThemeProvider theme={footerTheme}>
       <AppBar color="primary" position="static" className={classes.appbar}>
+<<<<<<< HEAD
         {/* <Toolbar className={clsx("flex items-center", classes.footer)}>
           <div className="flex items-center container w-full">
             
@@ -46,6 +51,29 @@ const Footer = () => {
             </p>
           </div>
         </Toolbar> */}
+=======
+        <Toolbar className={clsx("flex items-center", classes.footer)}>
+          <div className="flex items-center container w-full">
+            {/* <a
+              href="https://github.com/uilibrary/matx-react"
+              target="_blank"
+              className="mr-2"
+              rel="noopener noreferrer"
+            >
+              <Button variant="contained">Download Free version</Button>
+            </a> */}
+            {/* <a href="https://material-ui.com/store/items/matx-pro-react-dashboard-template/">
+              <Button variant="contained" color="secondary">
+                Get MatX Pro
+              </Button>
+            </a> */}
+            <span className="m-auto"></span>
+            {/* <p className="m-0">
+              Design and Developed by <a href="http://ui-lib.com">UI Lib</a>
+            </p> */}
+          </div>
+        </Toolbar>
+>>>>>>> main
       </AppBar>
     </ThemeProvider>
   );

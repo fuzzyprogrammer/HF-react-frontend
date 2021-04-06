@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Breadcrumb } from "matx";
 import Axios from "axios";
 import MUIDataTable from "mui-datatables";
+<<<<<<< HEAD
 import {
   Avatar,
   Grow,
@@ -36,12 +37,27 @@ const FamilyList = () => {
   useEffect(() => {
     Axios.get("/api/hffamilies").then(({ data }) => {
       if (isAlive) setFamilyList(data);
+=======
+import { Avatar, Grow, Icon, IconButton, TextField } from "@material-ui/core";
+import { Link } from "react-router-dom";
+
+const FamilyList = () => {
+  const [isAlive, setIsAlive] = useState(true);
+  const [userList, setUserList] = useState([]);
+
+  useEffect(() => {
+    Axios.get("/api/user/all").then(({ data }) => {
+      if (isAlive) setUserList(data);
+>>>>>>> main
     });
     return () => setIsAlive(false);
   }, [isAlive]);
 
+<<<<<<< HEAD
   console.log(familyList);
 
+=======
+>>>>>>> main
   const columns = [
     {
       name: "name", // field name in the row object
@@ -49,6 +65,7 @@ const FamilyList = () => {
       options: {
         filter: true,
         customBodyRenderLite: (dataIndex) => {
+<<<<<<< HEAD
           let family = familyList[dataIndex];
 
           return (
@@ -63,6 +80,16 @@ const FamilyList = () => {
                   size="small"
                 />
                 {/* <small className="text-muted"></small> */}
+=======
+          let user = userList[dataIndex];
+
+          return (
+            <div className="flex items-center">
+              <Avatar className="w-48 h-48" src={user?.imgUrl} />
+              <div className="ml-3">
+                <h5 className="my-0 text-15">{user?.name}</h5>
+                <small className="text-muted">{user?.email}</small>
+>>>>>>> main
               </div>
             </div>
           );
@@ -70,6 +97,7 @@ const FamilyList = () => {
       },
     },
     {
+<<<<<<< HEAD
       name: "street",
       label: "Street",
       options: {
@@ -93,6 +121,18 @@ const FamilyList = () => {
         filter: true,
       },
     },
+=======
+      name: "address",
+      label: "Address",
+      options: {
+        filter: true,
+        // customBodyRenderLite: (dataIndex) => (
+        //   <span className="ellipsis">{userList[dataIndex].address}</span>
+        // ),
+      },
+    },
+
+>>>>>>> main
     {
       name: "action",
       label: " ",
@@ -100,6 +140,7 @@ const FamilyList = () => {
         filter: false,
         customBodyRenderLite: (dataIndex) => (
           <div className="flex items-center">
+<<<<<<< HEAD
             <div className="flex-grow">
               <Link to={`/pages/family-form/${familyList[dataIndex].id}`}>
                 <IconButton className={classes.icon}>
@@ -134,6 +175,19 @@ const FamilyList = () => {
                 </IconButton>
               </Link>
             </div>
+=======
+            <div className="flex-grow"></div>
+            <Link to="/pages/new-customer">
+              <IconButton>
+                <Icon>edit</Icon>
+              </IconButton>
+            </Link>
+            <Link to="/pages/view-customer">
+              <IconButton>
+                <Icon>arrow_right_alt</Icon>
+              </IconButton>
+            </Link>
+>>>>>>> main
           </div>
         ),
       },
@@ -145,6 +199,7 @@ const FamilyList = () => {
       <div className="mb-sm-30">
         <Breadcrumb
           routeSegments={[
+<<<<<<< HEAD
             { name: "Families", path: "/pages/family-list" },
             { name: "Family List" },
           ]}
@@ -169,6 +224,18 @@ const FamilyList = () => {
           <MUIDataTable
             title={"All Families"}
             data={familyList}
+=======
+            { name: "Pages", path: "/pages" },
+            { name: "Customer List" },
+          ]}
+        />
+      </div>
+      <div className="overflow-auto">
+        <div className="min-w-750">
+          <MUIDataTable
+            title={"All Customers"}
+            data={userList}
+>>>>>>> main
             columns={columns}
             options={{
               filterType: "textField",

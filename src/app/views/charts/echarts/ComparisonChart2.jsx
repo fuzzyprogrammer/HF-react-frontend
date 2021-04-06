@@ -2,6 +2,7 @@ import React from "react";
 import ReactEcharts from "echarts-for-react";
 import { useTheme } from "@material-ui/core/styles";
 
+<<<<<<< HEAD
 
 const ComparisonChart2 = ({ height, users, jamaths }) => {
 
@@ -9,6 +10,11 @@ const ComparisonChart2 = ({ height, users, jamaths }) => {
   // console.log(users)
   // console.log(jamaths)
   const { palette } = useTheme();
+=======
+const ComparisonChart2 = ({ height }) => {
+  const { palette } = useTheme();
+
+>>>>>>> main
   const option = {
     grid: {
       left: "6%",
@@ -34,6 +40,7 @@ const ComparisonChart2 = ({ height, users, jamaths }) => {
     tooltip: {},
     dataset: {
       source: [
+<<<<<<< HEAD
         ["Jam", "Jamath", "User", 'Family', 'Family Member'],
         ["Jan", 2200, 1200, 950, 800], 
         ["Feb", 800, 500, 1500, 600],
@@ -41,6 +48,15 @@ const ComparisonChart2 = ({ height, users, jamaths }) => {
         ["Apr", 1500, 1250, 950, 900], 
         ["May", 2450, 450, 950, 500], 
         ["June", 1700, 1250, 1500, 800], 
+=======
+        ["Month", "Website", "App", "Linux", "Windows"],
+        ["Jan", 2200, 1200, 950, 800],
+        ["Feb", 800, 500, 1500, 600],
+        ["Mar", 700, 1350, 800, 700],
+        ["Apr", 1500, 1250, 950, 900],
+        ["May", 2450, 450, 950, 500],
+        ["June", 1700, 1250, 1500, 800],
+>>>>>>> main
       ],
     },
     xAxis: {

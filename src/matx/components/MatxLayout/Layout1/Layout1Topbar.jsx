@@ -8,14 +8,24 @@ import {
   Hidden,
 } from "@material-ui/core";
 import { MatxMenu, MatxSearchBox } from "matx";
+<<<<<<< HEAD
 // import NotificationBar from "../SharedCompoents/NotificationBar";
 import { Link } from "react-router-dom";
 // import ShoppingCart from "../SharedCompoents/ShoppingCart";
+=======
+import NotificationBar from "../SharedCompoents/NotificationBar";
+import { Link } from "react-router-dom";
+import ShoppingCart from "../SharedCompoents/ShoppingCart";
+>>>>>>> main
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import clsx from "clsx";
 import useAuth from "app/hooks/useAuth";
 import useSettings from "app/hooks/useSettings";
+<<<<<<< HEAD
 // import { NotificationProvider } from "app/contexts/NotificationContext";
+=======
+import { NotificationProvider } from "app/contexts/NotificationContext";
+>>>>>>> main
 
 const useStyles = makeStyles(({ palette, ...theme }) => ({
   topbar: {
@@ -52,7 +62,11 @@ const useStyles = makeStyles(({ palette, ...theme }) => ({
     padding: 4,
     "& span": {
       margin: "0 8px",
+<<<<<<< HEAD
       color: palette.text.secondary
+=======
+      // color: palette.text.secondary
+>>>>>>> main
     }
   },
   menuItem: {
@@ -102,7 +116,11 @@ const Layout1Topbar = () => {
               <Icon>menu</Icon>
             </IconButton>
 
+<<<<<<< HEAD
             <div className="hide-on-mobile">
+=======
+            {/* <div className="hide-on-mobile">
+>>>>>>> main
               <IconButton>
                 <Icon>mail_outline</Icon>
               </IconButton>
@@ -114,6 +132,7 @@ const Layout1Topbar = () => {
               <IconButton>
                 <Icon>star_outline</Icon>
               </IconButton>
+<<<<<<< HEAD
             </div>
           </div>
           <div className="flex items-center">
@@ -121,6 +140,15 @@ const Layout1Topbar = () => {
             {/* <NotificationProvider> */}
               {/* <NotificationBar /> */}
             {/* </NotificationProvider> */}
+=======
+            </div> */}
+          </div>
+          <div className="flex items-center">
+            <MatxSearchBox />
+            {/* <NotificationProvider>
+              <NotificationBar />
+            </NotificationProvider> */}
+>>>>>>> main
             
             {/* <NotificationBar2 /> */}
 

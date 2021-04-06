@@ -5,7 +5,11 @@ import {
   withGoogleMap,
   GoogleMap,
   Marker,
+<<<<<<< HEAD
 } from "react-google-maps";
+=======
+} from "react-google-maps/api";
+>>>>>>> main
 
 import { InfoBox } from "react-google-maps/lib/components/addons/InfoBox";
 import { Card } from "@material-ui/core";
