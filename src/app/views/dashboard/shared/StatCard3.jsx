@@ -2,6 +2,7 @@ import React from "react";
 import { Grid, Card, IconButton, Icon } from "@material-ui/core";
 
 const StatCard3 = ({analiticalData}) => {
+  console.log(analiticalData);
   const numOfUsers = analiticalData?.users?.length || 0;
   const numOfJamaths = analiticalData?.jamaths?.length || 0;
   const numOfFamilies = analiticalData?.families?.length || 0;
