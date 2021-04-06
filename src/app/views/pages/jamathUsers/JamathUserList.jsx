@@ -10,7 +10,8 @@ const JamathUserList = () => {
   const [userList, setUserList] = useState([]);
 
   useEffect(() => {
-    Axios.get("/api/users").then(({ data }) => {
+    console.log(Axios.defaults);
+    Axios.get("/api/hfUsers").then(({ data }) => {
       if (isAlive) setUserList(data);
     });
     return () => setIsAlive(false);
@@ -72,7 +73,7 @@ const JamathUserList = () => {
           return (
             <div className="flex items-center">
               <div className="flex-grow"></div>
-            <Link to="/pages/jamath-user-form" user={user}>
+            <Link to={`/pages/jamath-user-form/${user.id}`}>
                 <IconButton>
                   <Icon>edit</Icon>
                 </IconButton>
@@ -102,7 +103,7 @@ const JamathUserList = () => {
       <div className="overflow-auto">
         <div className="min-w-750">
           <MUIDataTable
-            title={"All Customers"}
+            title={"All Jamath Users"}
             data={userList}
             columns={columns}
             options={{

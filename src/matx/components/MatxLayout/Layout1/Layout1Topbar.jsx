@@ -8,14 +8,14 @@ import {
   Hidden,
 } from "@material-ui/core";
 import { MatxMenu, MatxSearchBox } from "matx";
-import NotificationBar from "../SharedCompoents/NotificationBar";
+// import NotificationBar from "../SharedCompoents/NotificationBar";
 import { Link } from "react-router-dom";
-import ShoppingCart from "../SharedCompoents/ShoppingCart";
+// import ShoppingCart from "../SharedCompoents/ShoppingCart";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import clsx from "clsx";
 import useAuth from "app/hooks/useAuth";
 import useSettings from "app/hooks/useSettings";
-import { NotificationProvider } from "app/contexts/NotificationContext";
+// import { NotificationProvider } from "app/contexts/NotificationContext";
 
 const useStyles = makeStyles(({ palette, ...theme }) => ({
   topbar: {
@@ -52,7 +52,7 @@ const useStyles = makeStyles(({ palette, ...theme }) => ({
     padding: 4,
     "& span": {
       margin: "0 8px",
-      // color: palette.text.secondary
+      color: palette.text.secondary
     }
   },
   menuItem: {
@@ -118,13 +118,13 @@ const Layout1Topbar = () => {
           </div>
           <div className="flex items-center">
             <MatxSearchBox />
-            <NotificationProvider>
-              <NotificationBar />
-            </NotificationProvider>
+            {/* <NotificationProvider> */}
+              {/* <NotificationBar /> */}
+            {/* </NotificationProvider> */}
             
             {/* <NotificationBar2 /> */}
 
-            <ShoppingCart />
+            {/* <ShoppingCart /> */}
 
             <MatxMenu
               menuButton={

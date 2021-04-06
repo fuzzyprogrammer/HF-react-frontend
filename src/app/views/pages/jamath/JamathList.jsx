@@ -7,11 +7,11 @@ import { Link } from "react-router-dom";
 
 const JamathList = () => {
   const [isAlive, setIsAlive] = useState(true);
-  const [userList, setUserList] = useState([]);
+  const [jamathList, setJamathList] = useState([]);
 
   useEffect(() => {
-    Axios.get("/api/users").then(({ data }) => {
-      if (isAlive) setUserList(data);
+    Axios.get("/api/hfJamaths").then(({ data }) => {
+      if (isAlive) setJamathList(data);
     });
     return () => setIsAlive(false);
   }, [isAlive]);
@@ -23,7 +23,7 @@ const JamathList = () => {
       options: {
         filter: true,
         customBodyRenderLite: (dataIndex) => {
-          let user = userList[dataIndex];
+          let user = jamathList[dataIndex];
 
           return (
             <div className="flex items-center">
@@ -43,7 +43,7 @@ const JamathList = () => {
     //   options: {
     //     filter: true,
     //     // customBodyRenderLite: (dataIndex) => (
-    //     //   <span className="ellipsis">{userList[dataIndex].address}</span>
+    //     //   <span className="ellipsis">{jamathList[dataIndex].address}</span>
     //     // ),
     //   },
     // },
@@ -67,17 +67,17 @@ const JamathList = () => {
       options: {
         filter: false,
         customBodyRenderLite: (dataIndex) =>{
-          let user = userList[dataIndex];
-          console.log({user})
+          let jamath = jamathList[dataIndex];
+          // console.log({user})
           return (
             <div className="flex items-center">
               <div className="flex-grow"></div>
-            <Link to="/pages/jamath-user-form" user={user}>
+            <Link to={`/pages/jamath-form/${jamath.id}`}>
                 <IconButton>
                   <Icon>edit</Icon>
                 </IconButton>
               </Link>
-            <Link to="/pages/view-jamath-user" user={user}>
+            <Link to="/pages/view-jamath">
                 <IconButton>
                   <Icon>arrow_right_alt</Icon>
                 </IconButton>
@@ -95,15 +95,15 @@ const JamathList = () => {
         <Breadcrumb
           routeSegments={[
             { name: "Pages", path: "/pages" },
-            { name: "User List" },
+            { name: "Jamath List" },
           ]}
         />
       </div>
       <div className="overflow-auto">
         <div className="min-w-750">
           <MUIDataTable
-            title={"All Customers"}
-            data={userList}
+            title={"Jamaths"}
+            data={jamathList}
             columns={columns}
             options={{
               filterType: "textField",

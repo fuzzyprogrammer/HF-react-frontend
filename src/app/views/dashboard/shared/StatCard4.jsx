@@ -1,27 +1,32 @@
 import React from "react";
 import { Grid, Card, IconButton, Icon } from "@material-ui/core";
 
-const StatCard4 = () => {
+const StatCard4 = ({analiticalData}) => {
+  const numOfUsers = analiticalData?.users?.length || 0;
+  const numOfJamaths = analiticalData?.jamaths?.length || 0;
+  const numOfFamilies = analiticalData?.families?.length || 0;
+  const numOfFamilyMembers = analiticalData?.family_members?.length || 0;
+
   const statList = [
     {
       icon: "colorize",
-      amount: 48,
-      title: "New Posts",
+      amount: numOfUsers,
+      title: "Users",
     },
     {
       icon: "attachment",
-      amount: 291,
-      title: "Attached Files",
+      amount: numOfJamaths,
+      title: "Jamaths",
     },
     {
       icon: "mode_comment",
-      amount: 291,
-      title: "Comments",
+      amount: numOfFamilies,
+      title: "Families",
     },
     {
       icon: "remove_red_eye",
-      amount: 110,
-      title: "Total Views",
+      amount: numOfFamilyMembers,
+      title: "Family Members",
     },
   ];
 

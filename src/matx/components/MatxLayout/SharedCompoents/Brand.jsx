@@ -29,7 +29,6 @@ const Brand = ({ children }) => {
             [classes.hideOnCompact]: mode === "compact",
           })}
         >
-          Matx
         </span>
       </div>
       <div

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import Axios from "axios";
 import { Formik } from "formik";
 import {
@@ -16,33 +17,63 @@ import {
   Button,
 } from "@material-ui/core";
 import { Breadcrumb } from "matx";
+import history from "history.js";
 
 const JamathForm = () => {
-  // console.log({user});
-  const [jamaths, setJamaths] = useState([]);
-  const [role, setRole] = useState([]);
+  let { slug } = useParams();
+  let id = parseInt(slug);
+
+  const [users, setUsers] = useState([]);
+  const [jamath, setJamath] = useState();
 
   useEffect(() => {
-    Axios.get("/api/jamaths").then(({ data }) => {
-      setJamaths(data);
-    });
-
-    Axios.get("/api/role").then(({ data }) => {
-      setRole(data);
-    });
-  }, [])
-
-
-  const handleSubmit = async (values, { isSubmitting }) => {
-    console.log(values);
-    await Axios.post('api/users', values)
-      .then(function (res) {
-        console.log(res);
-      })
-      .catch(function (err) {
+    async function fetchMyAPI() {
+      await Axios.get(`api/hfJamaths/${id}`).then((res) => {
+        setJamath(res.data[0]);
+      }).catch((err) => {
         console.log(err);
       });
+    }
+    fetchMyAPI()
+  }, [id]);
+
+  useEffect(() => {
+    Axios.get("/api/hfUsers").then(({ data }) => {
+      setUsers(data);
+    });
+  }, [])
+  console.log(jamath)
+  const initialValues = {
+    'name': jamath ? jamath.name : '',
+    'user_id': jamath ? jamath.user_id : '',
   };
+
+  const handleSubmit = async (values, { isSubmitting }) => {
+    if (jamath) {
+      values.id = jamath.id
+      await Axios.put(`api/hfJamaths/${jamath.id}`, values)
+        .then(function (res) {
+          if (res.status === 200) {
+            history.push('/pages/jamath-list');
+          }
+        })
+        .catch(function (err) {
+          console.log(err);
+        });
+    } else {
+      await Axios.post('api/hfJamaths', values)
+        .then(function (res) {
+          if (res.status === 200) {
+            history.push('/pages/jamath-list');
+          }
+        })
+        .catch(function (err) {
+          console.log(err);
+        });
+    }
+  };
+
+  const handleCancel = () => history.push('/pages/jamath-list');
 
 
   return (
@@ -51,20 +82,21 @@ const JamathForm = () => {
         <Breadcrumb
           routeSegments={[
             { name: "Pages", path: "/pages" },
-            { name: "New User" },
+            { name: "New Jamath" },
           ]}
         />
       </div>
 
       <Card elevation={3}>
         <div className="flex p-4">
-          <h4 className="m-0">Add a New User</h4>
+          <h4 className="m-0">Add a New Jamath</h4>
         </div>
         <Divider className="mb-2" />
 
         <Formik
           initialValues={initialValues}
           onSubmit={handleSubmit}
+          onClick={handleCancel}
           enableReinitialize={true}
         >
           {({
@@ -81,11 +113,11 @@ const JamathForm = () => {
             <form className="p-4" onSubmit={handleSubmit}>
               <Grid container spacing={3} alignItems="center">
                 <Grid item md={2} sm={4} xs={12}>
-                  User Name
+                  Jamath Name
                 </Grid>
                 <Grid item md={10} sm={8} xs={12}>
                   <TextField
-                    label="Full Name"
+                    label="Jamath Name"
                     name="name"
                     size="small"
                     variant="outlined"
@@ -95,83 +127,20 @@ const JamathForm = () => {
                 </Grid>
 
                 <Grid item md={2} sm={4} xs={12}>
-                  User Email
-                </Grid>
-                <Grid item md={10} sm={8} xs={12}>
-                  <TextField
-                    label="User Email"
-                    name="email"
-                    size="small"
-                    type="email"
-                    variant="outlined"
-                    value={values.email}
-                    onChange={handleChange}
-                  />
-                </Grid>
-
-                {/* <Grid item md={2} sm={4} xs={12}>
-                  Customer Phone
-                </Grid>
-                <Grid item md={10} sm={8} xs={12}>
-                  <div className="flex flex-wrap m--2">
-                    <TextField
-                      className="m-2"
-                      label="Work Phone"
-                      name="workPhone"
-                      size="small"
-                      variant="outlined"
-                      value={values.workPhone}
-                      onChange={handleChange}
-                    />
-                    <TextField
-                      className="m-2"
-                      label="Mobile"
-                      name="mobile"
-                      size="small"
-                      variant="outlined"
-                      value={values.mobile}
-                      onChange={handleChange}
-                    />
-                  </div>
-                </Grid> */}
-
-                <Grid item md={2} sm={4} xs={12}>
-                  Jamath
+                  User
                 </Grid>
                 <Grid item md={10} sm={8} xs={12}>
                   <TextField
                     className="min-w-208"
-                    label="Jamath"
-                    name="jamath_id"
+                    label="User"
+                    name="user_id"
                     size="small"
                     variant="outlined"
                     select
-                    value={values.jamath_id || ""}
-                    onChange={handleChange}
-                    >
-                      {jamaths.map((item) => (
-                        <MenuItem value={item.id} key={item.id}>
-                          {item.name}
-                        </MenuItem>
-                      ))}
-                    </TextField>
-                  </Grid>
-
-                <Grid item md={2} sm={4} xs={12}>
-                  Role
-                </Grid>
-                <Grid item md={10} sm={8} xs={12}>
-                  <TextField
-                    className="min-w-208"
-                    label="Role"
-                    name="role_id"
-                    size="small"
-                    variant="outlined"
-                    select
-                    value={values.role_id || ""}
+                    value={values.user_id || ""}
                     onChange={handleChange}
                   >
-                    {role.map((item) => (
+                    {users.map((item) => (
                       <MenuItem value={item.id} key={item.id}>
                         {item.name}
                       </MenuItem>
@@ -182,20 +151,22 @@ const JamathForm = () => {
 
               <div className="mt-6">
                 <Button color="primary" variant="contained" type="submit">
-                  Submit
+                  {jamath ? `Update` :`Submit`}
+                </Button>
+                <Button className={'ml-5'} color="secondary" variant="contained" type="cancel" onClick={handleCancel}>
+                  Cancel
                 </Button>
               </div>
+              
             </form>
           )}
         </Formik>
       </Card>
     </div>
   );
+
 };
 
 
-const initialValues = {
-  
-};
 
 export default JamathForm;

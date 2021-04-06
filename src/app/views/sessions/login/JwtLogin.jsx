@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Card,
   Checkbox,
@@ -33,10 +33,12 @@ const useStyles = makeStyles(({ palette, ...theme }) => ({
 }));
 
 const JwtLogin = () => {
+  // const [isAlive, setIsAlive] = useState(true);
   const [loading, setLoading] = useState(false);
-  const [userInfo, setUserInfo] = useState({email: "admin@email.com", password: 'admin@123'});
+  const [userInfo, setUserInfo] = useState({ email: "admin@email.com", password: 'admin@123' });
   const [message, setMessage] = useState('');
-  const { login } = useAuth();
+  const { login, user } = useAuth();
+
 
   const classes = useStyles();
 
@@ -49,15 +51,19 @@ const JwtLogin = () => {
   const handleFormSubmit = async (event) => {
     setLoading(true);
     try {
-      console.log(userInfo)
+      // console.log(userInfo)
       await login(userInfo.email, userInfo.password);
       history.push("/");
-    } catch(e) {
+    } catch (e) {
       console.log(e);
       setMessage(e.message);
       setLoading(false);
     }
   };
+
+  // useEffect(() => {
+  //   user &&  history.push("/");
+  // }, [])
 
   return (
     <div
@@ -72,7 +78,7 @@ const JwtLogin = () => {
             <div className="p-8 flex justify-center items-center h-full">
               <img
                 className="w-200"
-                src="/assets/images/illustrations/dreamer.svg"
+                src="/assets/images/HFLogo.jpg"
                 alt=""
               />
             </div>
@@ -144,13 +150,13 @@ const JwtLogin = () => {
                       />
                     )}
                   </div>
-                  <span className="mr-2 ml-5">or</span>
-                  <Button
+                  {/* <span className="mr-2 ml-5">or</span> */}
+                  {/* <Button
                     className="capitalize"
                     onClick={() => history.push("/session/signup")}
                   >
                     Sign up
-                  </Button>
+                  </Button> */}
                 </div>
                 <Button
                   className="text-primary"

@@ -1,0 +1,21 @@
+.MuiTable-root,
+.MuiTableBody-root,
+.MuiTableCell-root,
+.MuiTableRow-root {
+  border: 1px solid black;
+}
+
+.MuiTableCell-root {
+  padding: 10px;
+  word-wrap: break-word;
+
+}
+
+.MuiTableCell-body {
+  border: 1px solid black;
+}
+
+table > td {
+  border: 1px solid black;
+  word-wrap: break-word;
+}

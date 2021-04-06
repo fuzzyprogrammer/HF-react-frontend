@@ -12,7 +12,7 @@ import calendarRoutes from "./views/calendar/CalendarRoutes";
 import crudRoute from "./views/CRUD/CrudRoutes";
 import inboxRoute from "./views/inbox/InboxRoutes";
 import formsRoutes from "./views/forms/FormsRoutes";
-import mapRoutes from "./views/map/MapRoutes";
+// import mapRoutes from "./views/map/MapRoutes";
 import chatRoutes from "./views/chat-box/ChatRoutes";
 import todoRoutes from "./views/todo/TodoRoutes";
 import pageLayoutRoutes from "./views/page-layouts/PageLayoutRoutees";
@@ -49,7 +49,7 @@ const routes = [
   ...crudRoute,
   ...inboxRoute,
   ...formsRoutes,
-  ...mapRoutes,
+  // ...mapRoutes,
   ...chatRoutes,
   ...todoRoutes,
   ...scrumBoardRoutes,

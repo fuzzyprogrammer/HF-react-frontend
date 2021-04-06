@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import Axios from "axios";
+import { useParams } from "react-router-dom";
+import axios from "axios";
 import { Formik } from "formik";
 import {
   Grid,
@@ -16,33 +17,77 @@ import {
   Button,
 } from "@material-ui/core";
 import { Breadcrumb } from "matx";
+import history from 'history.js'
 
 const JamathForm = () => {
-  // console.log({user});
   const [jamaths, setJamaths] = useState([]);
-  const [role, setRole] = useState([]);
+  const [roles, setRoles] = useState([]);
+  const [user, setUser] = useState();
+  let { slug } = useParams();
+  let id = parseInt(slug);
 
   useEffect(() => {
-    Axios.get("/api/jamaths").then(({ data }) => {
+    async function fetchMyAPI() {
+      await axios.get(`api/hfUsers/${id}`).then((res) => {
+        setUser(res.data[0]);
+      }).catch((err) => {
+        console.log(err);
+      });
+    }
+    fetchMyAPI()
+  }, [id]);
+
+  useEffect(() => {
+    axios.get("/api/hfJamaths").then(({data}) => {
       setJamaths(data);
-    });
-
-    Axios.get("/api/role").then(({ data }) => {
-      setRole(data);
-    });
-  }, [])
-
-
+      })
+        .catch((err) => {
+          console.log(err);
+        });
+        
+        axios.get("/api/hfRoles").then(({ data }) => {
+          console.log(data)
+        setRoles(data)
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    },[]);
+  
+  const initialValues = {
+    name: user ? user.name : '',
+    email: user? user.email : "",
+    role_id: user? user.role_id : "",
+    jamath_id: user? user.jamath_id : "",
+  }
+  
   const handleSubmit = async (values, { isSubmitting }) => {
     console.log(values);
-    await Axios.post('api/users', values)
+    if(user){
+      values.id = user.id;
+      await axios.put(`api/hfUsers/${user.id}`,values)
+        .then(function (res) {
+          if(res){
+            history.push('/pages/jamath-user-list')
+          }
+        })
+        .catch(function (err) {
+          console.log(err);
+        });
+    }else{
+    await axios.post('api/hfUsers', values)
       .then(function (res) {
-        console.log(res);
+        if (res) {
+          history.push('/pages/jamath-user-list')
+        }
       })
       .catch(function (err) {
         console.log(err);
       });
+    }
   };
+  const handleCancel = () => history.push('/pages/jamath-user-list');
+  
 
 
   return (
@@ -58,13 +103,14 @@ const JamathForm = () => {
 
       <Card elevation={3}>
         <div className="flex p-4">
-          <h4 className="m-0">Add a New User</h4>
+          <h4 className="m-0">Add a New Jamath User</h4>
         </div>
         <Divider className="mb-2" />
 
         <Formik
           initialValues={initialValues}
-          onSubmit={handleSubmit}
+          onSubmit={handleSubmit} 
+          onClick={handleCancel}
           enableReinitialize={true}
         >
           {({
@@ -171,7 +217,7 @@ const JamathForm = () => {
                     value={values.role_id || ""}
                     onChange={handleChange}
                   >
-                    {role.map((item) => (
+                    {roles.map((item) => (
                       <MenuItem value={item.id} key={item.id}>
                         {item.name}
                       </MenuItem>
@@ -182,7 +228,10 @@ const JamathForm = () => {
 
               <div className="mt-6">
                 <Button color="primary" variant="contained" type="submit">
-                  Submit
+                  {user ? `Update` :'Submit'}
+                </Button>
+                <Button className={'ml-5'} color="secondary" variant="contained" type="cancel" onClick={handleCancel}>
+                  Cancel
                 </Button>
               </div>
             </form>
@@ -194,8 +243,10 @@ const JamathForm = () => {
 };
 
 
-const initialValues = {
-  
-};
+
+
+// const initialValues = {
+//   name : user.name,
+// };
 
 export default JamathForm;

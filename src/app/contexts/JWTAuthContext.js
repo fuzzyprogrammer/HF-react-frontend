@@ -16,7 +16,7 @@ const isValidToken = (accessToken) => {
 
   const decodedToken = jwtDecode(accessToken);
   const currentTime = Date.now() / 1000;
-  console.log(decodedToken);
+  // console.log(decodedToken);
   return decodedToken.exp > currentTime;
 };
 
@@ -48,7 +48,7 @@ const reducer = (state, action) => {
         ...state,
         isAuthenticated: true,
         user,
-        role,
+        role, 
       };
     }
     case "LOGOUT": {
@@ -88,9 +88,11 @@ export const AuthProvider = ({ children }) => {
   const login = async (email, password) => {
     
     const response = await axios.post("/api/auth/login", { email, password });
-    console.log(response)
+    // console.log(response)
     const { accessToken, user, role } = response.data;
-    
+    localStorage.setItem("role", role);
+    // localStorage.setItem("user", user);
+
     setSession(accessToken);
 
     dispatch({
@@ -122,6 +124,8 @@ export const AuthProvider = ({ children }) => {
   };
 
   const logout = () => {
+    const response = axios.post("/api/auth/logout");
+    console.log(response);
     setSession(null);
     dispatch({ type: "LOGOUT" });
   };

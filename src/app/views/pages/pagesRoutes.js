@@ -66,7 +66,11 @@ const pagesRoutes = [
     component: React.lazy(()=> import("./jamathUsers/JamathUserList")),
   },
   {
-    path: "/pages/jamath-user-form",
+    path: "/pages/jamath-user-form/:slug",
+    component: React.lazy(()=> import("./jamathUsers/jamath-user-form/JamathForm")),
+  },
+  {
+    path: "/pages/jamath-user-form/",
     component: React.lazy(()=> import("./jamathUsers/jamath-user-form/JamathForm")),
   },
   {
@@ -80,6 +84,10 @@ const pagesRoutes = [
     component: React.lazy(() => import("./jamath/JamathList")),
   },
   {
+    path: "/pages/jamath-form/:slug",
+    component: React.lazy(() => import("./jamath/jamath-form/JamathForm")),
+  },
+  {
     path: "/pages/jamath-form",
     component: React.lazy(() => import("./jamath/jamath-form/JamathForm")),
   },
@@ -87,6 +95,37 @@ const pagesRoutes = [
     path: "/pages/view-jamath",
     component: React.lazy(() => import("./jamath/jamath-viewer/JamathViewer")),
   },
+  {
+    path: "/pages/family-form/:id",
+    component: React.lazy(() => import("./families/family-form/FamilyForm")),
+  },
+  {
+    path: "/pages/family-form",
+    component: React.lazy(() => import("./families/family-form/FamilyForm")),
+  },
+  {
+    path: "/pages/family-list",
+    component: React.lazy(() => import("./families/FamilyList")),
+  },
+  {
+    path: "/pages/family-member-form/:slug",
+    component: React.lazy(() => import("./families/members-form/MemberForm")),
+  },
+  // {
+  //   path: "/pages/family-member-form",
+  //   component: React.lazy(() => import("./families/members-form/MemberForm")),
+  // },
+  {
+    path: "/pages/view-family/:familyId",
+    component: React.lazy(() => import("./families/family-viewer/FamilyViewer")),
+  },
+  {
+    path: "/pages/view-family-report/:familyId",
+    component: React.lazy(() => import("./families/family-viewer/report/FamilyReport")),
+  },
+  
+
+
 ];
 
 export default pagesRoutes;
