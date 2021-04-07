@@ -1,7 +1,6 @@
 import React from "react";
 import { Grid, Card, IconButton, Icon } from "@material-ui/core";
 
-<<<<<<< HEAD
 const StatCard3 = ({analiticalData}) => {
   console.log(analiticalData);
   const numOfUsers = analiticalData?.users?.length || 0;
@@ -28,29 +27,6 @@ const StatCard3 = ({analiticalData}) => {
       icon: "card_giftcard",
       amount: numOfFamilyMembers,
       title: "Family Members",
-=======
-const StatCard3 = () => {
-  const statList = [
-    {
-      icon: "people",
-      amount: 10495,
-      title: "New Members",
-    },
-    {
-      icon: "location_on_outlined",
-      amount: 30942,
-      title: "Places added",
-    },
-    {
-      icon: "keyboard_voice",
-      amount: 45269,
-      title: "Support Members",
-    },
-    {
-      icon: "card_giftcard",
-      amount: 20965,
-      title: "Tags Used",
->>>>>>> main
     },
   ];
 

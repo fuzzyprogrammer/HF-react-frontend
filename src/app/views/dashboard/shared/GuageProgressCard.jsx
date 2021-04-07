@@ -92,15 +92,9 @@ const GaugeProgressCard = () => {
         />
         <Icon className={clsx("text-muted text-36", classes.icon)}>people</Icon>
       </div>
-<<<<<<< HEAD
       <h5 className="text-center font-medium mb-2">Family Members</h5>
       <p className="m-0 text-muted text-center">
         Close to reach 1000k family members!
-=======
-      <h5 className="text-center font-medium mb-2">Awesome</h5>
-      <p className="m-0 text-muted text-center">
-        Close to reach 1000k folowers!
->>>>>>> main
       </p>
     </Card>
   );

@@ -12,11 +12,7 @@ import calendarRoutes from "./views/calendar/CalendarRoutes";
 import crudRoute from "./views/CRUD/CrudRoutes";
 import inboxRoute from "./views/inbox/InboxRoutes";
 import formsRoutes from "./views/forms/FormsRoutes";
-<<<<<<< HEAD
 // import mapRoutes from "./views/map/MapRoutes";
-=======
-import mapRoutes from "./views/map/MapRoutes";
->>>>>>> main
 import chatRoutes from "./views/chat-box/ChatRoutes";
 import todoRoutes from "./views/todo/TodoRoutes";
 import pageLayoutRoutes from "./views/page-layouts/PageLayoutRoutees";
@@ -28,10 +24,6 @@ import ecommerceRoutes from "./views/ecommerce/EcommerceRoutes";
 import pagesRoutes from "./views/pages/pagesRoutes";
 import dataTableRoutes from "./views/data-table/dataTableRoutes";
 
-<<<<<<< HEAD
-=======
-
->>>>>>> main
 const redirectRoute = [
   {
     path: "/",
@@ -57,11 +49,7 @@ const routes = [
   ...crudRoute,
   ...inboxRoute,
   ...formsRoutes,
-<<<<<<< HEAD
   // ...mapRoutes,
-=======
-  ...mapRoutes,
->>>>>>> main
   ...chatRoutes,
   ...todoRoutes,
   ...scrumBoardRoutes,

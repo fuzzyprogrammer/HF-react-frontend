@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 import React, { useEffect, useState } from "react";
-=======
-import React, { useState } from "react";
->>>>>>> main
 import {
   Card,
   Checkbox,
@@ -37,7 +33,6 @@ const useStyles = makeStyles(({ palette, ...theme }) => ({
 }));
 
 const JwtLogin = () => {
-<<<<<<< HEAD
   // const [isAlive, setIsAlive] = useState(true);
   const [loading, setLoading] = useState(false);
   // const [userInfo, setUserInfo] = useState({ email: "admin@email.com", password: 'admin@123' }); //local development
@@ -45,13 +40,6 @@ const JwtLogin = () => {
   const [message, setMessage] = useState('');
   const { login, user } = useAuth();
 
-=======
-  const [loading, setLoading] = useState(false);
-  const [userInfo, setUserInfo] = useState({email: "", password: ''});
-  // const [userInfo, setUserInfo] = useState({email: "jason@ui-lib.com", password: 'dummyPass'});
-  const [message, setMessage] = useState('');
-  const { login } = useAuth();
->>>>>>> main
 
   const classes = useStyles();
 
@@ -64,29 +52,20 @@ const JwtLogin = () => {
   const handleFormSubmit = async (event) => {
     setLoading(true);
     try {
-<<<<<<< HEAD
       // console.log(userInfo)
       await login(userInfo.email, userInfo.password);
       history.push("/");
     } catch (e) {
-=======
-      await login(userInfo.email, userInfo.password);
-      history.push("/");
-    } catch(e) {
->>>>>>> main
       console.log(e);
       setMessage(e.message);
       setLoading(false);
     }
   };
 
-<<<<<<< HEAD
   // useEffect(() => {
   //   user &&  history.push("/");
   // }, [])
 
-=======
->>>>>>> main
   return (
     <div
       className={clsx(
@@ -100,11 +79,7 @@ const JwtLogin = () => {
             <div className="p-8 flex justify-center items-center h-full">
               <img
                 className="w-200"
-<<<<<<< HEAD
                 src="/assets/images/HFLogo.jpg"
-=======
-                src="/assets/images/illustrations/dreamer.svg"
->>>>>>> main
                 alt=""
               />
             </div>
@@ -176,13 +151,8 @@ const JwtLogin = () => {
                       />
                     )}
                   </div>
-<<<<<<< HEAD
                   {/* <span className="mr-2 ml-5">or</span> */}
                   {/* <Button
-=======
-                  {/* <span className="mr-2 ml-5">or</span>
-                  <Button
->>>>>>> main
                     className="capitalize"
                     onClick={() => history.push("/session/signup")}
                   >

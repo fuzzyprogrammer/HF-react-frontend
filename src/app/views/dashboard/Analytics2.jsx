@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 import React, { useEffect, useState } from "react";
-=======
-import React from "react";
->>>>>>> main
 import {
   Card,
   TextField,
@@ -17,7 +13,6 @@ import StatCard4 from "./shared/StatCard4";
 import GaugeProgressCard from "./shared/GuageProgressCard";
 import FollowerCard from "./shared/FollowerCard";
 import FollowerCard2 from "./shared/FollowerCard2";
-<<<<<<< HEAD
 import Axios from "axios";
 import useAuth from "app/hooks/useAuth";
 
@@ -39,10 +34,6 @@ const Analytics2 = () => {
   }, []);
 
 
-=======
-
-const Analytics2 = () => {
->>>>>>> main
   return (
     <div className="analytics m-sm-30">
       <div className="flex justify-between items-center items-center mb-6">
@@ -55,11 +46,7 @@ const Analytics2 = () => {
         </TextField>
       </div>
 
-<<<<<<< HEAD
       <StatCard3 analiticalData={analiticalData} />
-=======
-      <StatCard3 />
->>>>>>> main
 
       <Card className="mt-5 mb-6" elevation={3}>
         <div className=" px-4 py-3 mb-6 flex justify-between items-center bg-light-gray">
@@ -68,20 +55,12 @@ const Analytics2 = () => {
             <Icon>more_horiz</Icon>
           </IconButton>
         </div>
-<<<<<<< HEAD
         <ComparisonChart2 height={400} analiticalData={analiticalData} />
-=======
-        <ComparisonChart2 height={400} />
->>>>>>> main
       </Card>
 
       <Grid container spacing={3}>
         <Grid item md={4} xs={12}>
-<<<<<<< HEAD
           <StatCard4 analiticalData={analiticalData} />
-=======
-          <StatCard4 />
->>>>>>> main
         </Grid>
         <Grid item md={4} xs={12}>
           <GaugeProgressCard />

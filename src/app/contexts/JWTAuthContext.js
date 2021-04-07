@@ -16,11 +16,7 @@ const isValidToken = (accessToken) => {
 
   const decodedToken = jwtDecode(accessToken);
   const currentTime = Date.now() / 1000;
-<<<<<<< HEAD
   // console.log(decodedToken);
-=======
-  console.log(decodedToken);
->>>>>>> main
   return decodedToken.exp > currentTime;
 };
 
@@ -47,20 +43,12 @@ const reducer = (state, action) => {
       };
     }
     case "LOGIN": {
-<<<<<<< HEAD
       const { user, role } = action.payload;
-=======
-      const { user } = action.payload;
-
->>>>>>> main
       return {
         ...state,
         isAuthenticated: true,
         user,
-<<<<<<< HEAD
         role, 
-=======
->>>>>>> main
       };
     }
     case "LOGOUT": {
@@ -100,26 +88,18 @@ export const AuthProvider = ({ children }) => {
   const login = async (email, password) => {
     
     const response = await axios.post("/api/auth/login", { email, password });
-<<<<<<< HEAD
     // console.log(response)
     const { accessToken, user, role } = response.data;
     localStorage.setItem("role", role);
     // localStorage.setItem("user", user);
 
-=======
-    const { accessToken, user } = response.data;
-    
->>>>>>> main
     setSession(accessToken);
 
     dispatch({
       type: "LOGIN",
       payload: {
         user,
-<<<<<<< HEAD
         role
-=======
->>>>>>> main
       },
     });
   };
@@ -144,11 +124,8 @@ export const AuthProvider = ({ children }) => {
   };
 
   const logout = () => {
-<<<<<<< HEAD
     const response = axios.post("/api/auth/logout");
     console.log(response);
-=======
->>>>>>> main
     setSession(null);
     dispatch({ type: "LOGOUT" });
   };
@@ -160,11 +137,7 @@ export const AuthProvider = ({ children }) => {
 
         if (accessToken && isValidToken(accessToken)) {
           setSession(accessToken);
-<<<<<<< HEAD
           const response = await axios.post("/api/auth/me");
-=======
-          const response = await axios.get("/api/auth/profile");
->>>>>>> main
           const { user } = response.data;
 
           dispatch({
