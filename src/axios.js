@@ -1,8 +1,7 @@
 import axios from "axios";
 
 
-axios.defaults.baseURL =
-  "http://phplaravel-310793-951903.cloudwaysapps.com/hidayahapp/public/"; //deployment
+axios.defaults.baseURL ="http://phplaravel-310793-951903.cloudwaysapps.com/hidayahapp/public/"; //deployment
 // axios.defaults.baseURL = 'http://127.0.0.1:8000';  // For local development
 // axios.defaults.headers.post['Content-Type'] = "application/json"
 
