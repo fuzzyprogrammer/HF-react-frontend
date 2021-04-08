@@ -1,5 +1,5 @@
 {
-"homepage": "http://phplaravel-310793-951903.cloudwaysapps.com/",
+  "homepage": "http://phplaravel-310793-951903.cloudwaysapps.com/",
   "name": "matx-react",
   "version": "1.4.0",
   "private": true,
@@ -23,7 +23,6 @@
     "echarts": "^4.8.0",
     "echarts-for-react": "^2.0.16",
     "firebase": "^8.2.6",
-
     "formik": "^2.1.5",
     "globalize": "^0.1.1",
     "history": "^4.10.0",
