@@ -87,14 +87,14 @@ const FamilyForm = () => {
     return () => setIsAlive(false);
   }, [isAlive]);
 
-  useEffect(async () => {
+  useEffect(() => {
     if (ID) {
-      let res = await getFamily(ID);
+      let res =  getFamily(ID);
       if (res.status === 200) {
         setFamilyData(res.data);
       }
     }
-  }, []);
+  }, [ID]);
 
   console.log(familyData);
   const handleRationCardImg = (e) => {
