@@ -20,11 +20,15 @@ import {
 } from "@material-ui/pickers";
 import DateFnsUtils from "@date-io/date-fns";
 import MemberItemTable from "./MemberItemTable";
-import { handleMemberSubmit, getMajorList } from "./MemberFormService";
+import {
+  handleMemberSubmit,
+  getMajorList,
+  getDeniedList,
+} from "./MemberFormService";
 import { makeStyles } from "@material-ui/core/styles";
 import { useParams } from "react-router-dom";
 import useAuth from "app/hooks/useAuth";
-import moment, { now } from "moment";
+import moment from "moment";
 import history from "history.js";
 
 const useStyles = makeStyles((theme) => ({
@@ -74,8 +78,11 @@ const MemberForm = () => {
     getMajorList().then(({ data }) => {
       if (isAlive) setMajorList(data);
     });
+    getDeniedList(user).then(({data})=>{
+      // if (isAlive) setDeniedList
+    })
     return () => setIsAlive(false);
-  }, []);
+  }, [isAlive]);
 
   const handleProfilePic = (e) => {
     if (e.target.files.length) {
@@ -180,7 +187,6 @@ const MemberForm = () => {
       })
       .catch();
   };
-
   return (
     <div className="m-sm-30">
       <Card elevation={3}>
@@ -768,6 +774,8 @@ const MemberForm = () => {
                 <Grid item xs={12}>
                   <Divider />
                 </Grid>
+
+                
 
                 <Grid item md={2} sm={4} xs={12}>
                   Education

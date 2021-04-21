@@ -5,6 +5,10 @@ export const getMajorList = () => {
   return response;
 };
 
+export const getDeniedList = (user) => {
+  return axios.post("api/denied-access-list",user);
+}
+
 export const handleMemberSubmit = (values) => {
   let formData = new FormData();
   formData.append("isHead", values.isHead);

@@ -42,7 +42,7 @@ const JamathForm = () => {
       setUsers(data);
     });
   }, [])
-  console.log(jamath)
+  // console.log(jamath)
   const initialValues = {
     'name': jamath ? jamath.name : '',
     'user_id': jamath ? jamath.user_id : '',

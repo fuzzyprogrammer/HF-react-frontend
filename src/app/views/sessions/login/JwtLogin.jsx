@@ -35,8 +35,8 @@ const useStyles = makeStyles(({ palette, ...theme }) => ({
 const JwtLogin = () => {
   // const [isAlive, setIsAlive] = useState(true);
   const [loading, setLoading] = useState(false);
-  const [userInfo, setUserInfo] = useState({ email: "", password: '' }); // deployment
-  // const [userInfo, setUserInfo] = useState({ email: "admin@email.com", password: 'admin@123' }); //local development
+  // const [userInfo, setUserInfo] = useState({ email: "", password: '' }); // deployment
+  const [userInfo, setUserInfo] = useState({ email: "admin@email.com", password: 'admin@123' }); //local development
   const [message, setMessage] = useState('');
   const { login, user } = useAuth();
 

@@ -1,17 +1,22 @@
 import React, { useState, useEffect } from "react";
 import { Breadcrumb } from "matx";
-import Axios from "axios";
+import axios from "axios";
 import MUIDataTable from "mui-datatables";
 import { Avatar, Grow, Icon, IconButton, TextField } from "@material-ui/core";
 import { Link } from "react-router-dom";
+// import useAuth from 'app/hooks/useAuth';
 
 const JamathUserList = () => {
+  // let {user} = useAuth();
   const [isAlive, setIsAlive] = useState(true);
   const [userList, setUserList] = useState([]);
 
   useEffect(() => {
-    console.log(Axios.defaults);
-    Axios.get("/api/hfUsers").then(({ data }) => {
+    // console.log(axios.defaults);
+    // axios.get(`/api/user-list/${user?.id}`).then(({ data }) => {
+    //   if (isAlive) setUserList(data);
+    // });
+    axios.get("/api/hfUsers").then(({ data }) => {
       if (isAlive) setUserList(data);
     });
     return () => setIsAlive(false);

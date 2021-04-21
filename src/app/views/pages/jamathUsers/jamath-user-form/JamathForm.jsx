@@ -18,18 +18,22 @@ import {
 } from "@material-ui/core";
 import { Breadcrumb } from "matx";
 import history from 'history.js'
+import useAuth from 'app/hooks/useAuth';
 
 const JamathForm = () => {
-  const [jamaths, setJamaths] = useState([]);
+  let {user} = useAuth();
+  // console.log("usersINfo"+user.id);
+
+  // const [jamaths, setJamaths] = useState([]);
   const [roles, setRoles] = useState([]);
-  const [user, setUser] = useState();
+  const [users, setUsers] = useState();
   let { slug } = useParams();
   let id = parseInt(slug);
 
   useEffect(() => {
     async function fetchMyAPI() {
       await axios.get(`api/hfUsers/${id}`).then((res) => {
-        setUser(res.data[0]);
+        setUsers(res.data[0]);
       }).catch((err) => {
         console.log(err);
       });
@@ -38,12 +42,12 @@ const JamathForm = () => {
   }, [id]);
 
   useEffect(() => {
-    axios.get("/api/hfJamaths").then(({data}) => {
-      setJamaths(data);
-      })
-        .catch((err) => {
-          console.log(err);
-        });
+    // axios.get("/api/hfJamaths").then(({data}) => {
+    //   setJamaths(data);
+    //   })
+    //     .catch((err) => {
+    //       console.log(err);
+    //     });
         
         axios.get("/api/hfRoles").then(({ data }) => {
           console.log(data)
@@ -55,20 +59,21 @@ const JamathForm = () => {
     },[]);
   
   const initialValues = {
-    name: user ? user.name : '',
-    email: user? user.email : "",
-    role_id: user? user.role_id : "",
-    jamath_id: user? user.jamath_id : "",
+    name: users ? users.name : '',
+    email: users? users.email : "",
+    role_id: users? users.role_id : "",
+    // jamath_id: users? users.jamath_id : "",
   }
   
   const handleSubmit = async (values, { isSubmitting }) => {
+    values && ( values.parent_id = user.id );
     console.log(values);
-    if(user){
-      values.id = user.id;
-      await axios.put(`api/hfUsers/${user.id}`,values)
+    if(users){
+      values.id = users.id;
+      await axios.put(`api/hfUsers/${users.id}`,values)
         .then(function (res) {
           if(res){
-            history.push('/pages/jamath-user-list')
+            history.push('/pages/jamath-users-list')
           }
         })
         .catch(function (err) {
@@ -78,7 +83,7 @@ const JamathForm = () => {
     await axios.post('api/hfUsers', values)
       .then(function (res) {
         if (res) {
-          history.push('/pages/jamath-user-list')
+          history.push('/pages/jamath-users-list')
         }
       })
       .catch(function (err) {
@@ -86,7 +91,7 @@ const JamathForm = () => {
       });
     }
   };
-  const handleCancel = () => history.push('/pages/jamath-user-list');
+  const handleCancel = () => history.push('/pages/jamath-users-list');
   
 
 
@@ -181,7 +186,7 @@ const JamathForm = () => {
                   </div>
                 </Grid> */}
 
-                <Grid item md={2} sm={4} xs={12}>
+                {/* <Grid item md={2} sm={4} xs={12}>
                   Jamath
                 </Grid>
                 <Grid item md={10} sm={8} xs={12}>
@@ -201,7 +206,7 @@ const JamathForm = () => {
                         </MenuItem>
                       ))}
                     </TextField>
-                  </Grid>
+                  </Grid> */}
 
                 <Grid item md={2} sm={4} xs={12}>
                   Role
@@ -228,7 +233,7 @@ const JamathForm = () => {
 
               <div className="mt-6">
                 <Button color="primary" variant="contained" type="submit">
-                  {user ? `Update` :'Submit'}
+                  {users ? `Update` :'Submit'}
                 </Button>
                 <Button className={'ml-5'} color="secondary" variant="contained" type="cancel" onClick={handleCancel}>
                   Cancel
@@ -246,7 +251,7 @@ const JamathForm = () => {
 
 
 // const initialValues = {
-//   name : user.name,
+//   name : users.name,
 // };
 
 export default JamathForm;

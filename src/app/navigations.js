@@ -6,29 +6,60 @@ export const navigations = [
     name: "Dashboard",
     path: "/",
     icon: "dashboard",
-
   },
   {
     label: "Pages",
     type: "label",
   },
-  
-  
+
   {
     name: "Families",
     icon: "people",
     children: [
       {
         name: "Add Family",
-        path: "/pages/family-form",  
+        path: "/pages/family-form",
         iconText: "CL",
       },
       {
         name: "Family List",
-        path: "/pages/family-list",  
+        path: "/pages/family-list",
         iconText: "CL",
       },
-    ]
+    ],
+  },
+
+  {
+    name: "Settings",
+    icon: "settings",
+    children: [
+      {
+        name: "Jamath Access Settings",
+        path: "/pages/jamath-access",
+        iconText: "CL",
+      },
+      {
+        name: "State",
+        path: "/pages/state",
+        iconText: "CL",
+      },
+      // {
+      //   name: "District",
+      //   path: "/pages/district",
+      //   iconText: "CL",
+      // },
+    ],
+  },
+  {
+    name: "State Admins",
+    icon: "people",
+    children: [
+      {
+        name: "Add State Admin",
+        path: "/",
+        icon: "setting",
+      },
+    ],
   },
   // {
   //   name: "Customers",
@@ -414,11 +445,11 @@ export const navigations = [
   //       path: "/material/snackbar",
   //       iconText: "S",
   //     },
-  //     {
-  //       name: "Table",
-  //       path: "/material/table",
-  //       iconText: "T",
-  //     },
+  // {
+  //   name: "Table",
+  //   path: "/material/table",
+  //   iconText: "T",
+  // },
   //   ],
   // },
   // {
@@ -503,9 +534,7 @@ export const navigations = [
   // },
 ];
 
-
-
-  (authRoles.sa.includes(role)) &&
+authRoles.admin.includes(role) &&
   navigations.splice(1, 0, {
     name: "Users",
     icon: "people",
@@ -523,28 +552,28 @@ export const navigations = [
     ],
   });
 
-  authRoles.sa.includes(role) &&
-    navigations.splice(1, 0, {
-      name: "Jamaths",
-      icon: "books",
-      children: [
-        {
-          name: "Jamath List",
-          path: "/pages/jamath-list",
-          iconText: "CL",
-        },
-        {
-          name: "Add Jamath",
-          path: "/pages/jamath-form",
-          iconText: "CL",
-        },
-      ],
-    });
+authRoles.admin.includes(role) &&
+  navigations.splice(1, 0, {
+    name: "Jamaths",
+    icon: "books",
+    children: [
+      {
+        name: "Jamath List",
+        path: "/pages/jamath-list",
+        iconText: "CL",
+      },
+      {
+        name: "Add Jamath",
+        path: "/pages/jamath-form",
+        iconText: "CL",
+      },
+    ],
+  });
 
-  authRoles.sa.includes(role) &&
-    navigations.splice(1, 0, {
-      name: "Alternative",
-      path: "/dashboard/alternative",
-      icon: "analytics",
-      auth: authRoles.sa,
-    });
+authRoles.sa.includes(role) &&
+  navigations.splice(1, 0, {
+    name: "Alternative",
+    path: "/dashboard/alternative",
+    icon: "analytics",
+    auth: authRoles.sa,
+  });

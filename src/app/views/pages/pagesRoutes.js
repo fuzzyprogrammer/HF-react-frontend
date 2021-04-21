@@ -123,6 +123,36 @@ const pagesRoutes = [
     path: "/pages/view-family-report/:familyId",
     component: React.lazy(() => import("./families/family-viewer/report/FamilyReport")),
   },
+  {
+    path: "/pages/shared",
+    component: React.lazy(() => import("./families/family-viewer/report/FamilyReport")),
+  },
+
+  {
+    path: "/pages/jamath-access",
+    component: React.lazy(() => import("./settings/forms/JamathSettingForm")),
+  },
+
+  {
+    path: "/pages/state",
+    component: React.lazy(() => import("./settings/State/StateTable")),
+  },
+  {
+    path: "/pages/district/:stateId",
+    component: React.lazy(() => import("./settings/District/DistrictTable")),
+  },
+  {
+    path: "/pages/taluk/:districtId",
+    component: React.lazy(() => import("./settings/Taluk/TalukTable")),
+  },
+  {
+    path: "/pages/jamath/:talukId",
+    component: React.lazy(() => import("./settings/Jamath/JamathTable")),
+  },
+  {
+    path: "/pages/forms/:jamathId",
+    component: React.lazy(() => import("./settings/forms/JamathSettingForm")),
+  },
   
 
 
